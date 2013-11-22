@@ -19,9 +19,9 @@ class PenaltyKickTest < MiniTest::Test
   def test_player_can_score
     goalie = Goalie.new
     player = Player.new
+    match = Match.new(goalie, player)
     goalie.guess("R")
     player.kick("L")
-    binding.pry
-    assert_equal "Goal!!!", Match.score
+    assert_equal "Goal!!!", match.score
   end
 end

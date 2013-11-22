@@ -1,10 +1,14 @@
 class Goalie
+  attr_reader :dive
+  
   def guess(dive)
     @dive = dive
   end
 end
 
 class Player
+  attr_reader :aim
+
   def kick(aim)
     @aim = aim
   end
@@ -17,15 +21,11 @@ class Match
     @player = player
   end
 
-  def self.score
-    if @dive == @aim
+  def score
+    if goalie.dive == player.aim
       "Blocked"
-    elsif @dive != @aim
-      "Goal!!!"
     else
-      "Error"
+      "Goal!!!"
     end
   end
 end
-
-
