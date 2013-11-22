@@ -1,0 +1,1 @@
+This is a short Ruby program that simulates a penalty kick in soccer. First, the goalie must guess left, right, or center ('L, 'R', or 'C'). Next, the kicker aims left, right, or center. If the goalie guesses correctly, than the outcome is a block. If the goalie does not guess corectly, then the outcome is a goal.
