@@ -1,16 +1,32 @@
+module Valid
+  def valid_directions
+    ['L', 'R', 'C']
+  end
+end
+
 class Goalie
+  include Valid
   attr_reader :dive
   
   def guess(dive)
-    @dive = dive
+    if valid_directions.include?(dive)
+      @dive = dive
+    else
+      raise ArgumentError.new("Not a valid direction")
+    end
   end
 end
 
 class Player
+  include Valid
   attr_reader :aim
 
   def kick(aim)
-    @aim = aim
+    if valid_directions.include?(aim)
+      @aim = aim
+    else
+      raise ArgumentError.new("Not a valid direction")
+    end
   end
 end
 
@@ -29,3 +45,5 @@ class Match
     end
   end
 end
+
+
