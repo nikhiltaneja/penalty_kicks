@@ -5,10 +5,16 @@ require_relative "penalty_kick"
 
 class PenaltyKickTest < MiniTest::Test
 
-  def test_goalie_can_guess
+  def test_goalie_can_guess_left
     goalie = Goalie.new
     goalie.guess("L")
     assert_equal "L", goalie.dive
+  end
+
+  def test_goalie_can_guess_right
+    goalie = Goalie.new
+    goalie.guess("R")
+    assert_equal "R", goalie.dive
   end
 
   def test_valid_goalie_direction
