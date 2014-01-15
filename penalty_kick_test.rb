@@ -8,7 +8,7 @@ class PenaltyKickTest < MiniTest::Test
   def test_goalie_can_guess
     goalie = Goalie.new
     goalie.guess("L")
-    assert goalie.dive == "L"
+    assert_equal "L", goalie.dive
   end
 
   def test_valid_goalie_direction
@@ -18,10 +18,16 @@ class PenaltyKickTest < MiniTest::Test
     end
   end
 
-  def test_player_can_kick
+  def test_player_can_kick_left
     player = Player.new
     player.kick("L")
-    assert player.aim == "L"
+    assert_equal "L", player.aim
+  end
+
+  def test_player_can_kick_right
+    player = Player.new
+    player.kick("R")
+    assert_equal "R", player.aim
   end
 
   def test_valid_kicker_direction
