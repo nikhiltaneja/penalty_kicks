@@ -1,6 +1,6 @@
 module Valid
   def valid_directions
-    ['L', 'R', 'C']
+    ['L', 'R']
   end
 end
 
