@@ -49,7 +49,7 @@ class PenaltyKickTest < MiniTest::Test
     match = Match.new(goalie, player)
     goalie.guess("R")
     player.kick("L")
-    assert_equal "Goal!!!", match.score
+    assert_equal "Goal!!!", match.goal?
   end
 
   def test_goalie_can_block
@@ -58,6 +58,28 @@ class PenaltyKickTest < MiniTest::Test
     match = Match.new(goalie, player)
     goalie.guess("R")
     player.kick("R")
-    assert_equal "Blocked", match.score
+    assert_equal "Blocked", match.goal?
   end
+  
+  def test_a_matches_score_is_recored
+    goalie = Goalie.new
+    player = Player.new
+    match = Match.new(goalie, player)
+    goalie.guess("R")
+    player.kick("L")
+    assert_equal "Goal!!!", match.goal?
+    assert_equal 1, match.score
+  end
+  
+  def test_a_player_cant_kick_until_after_goalies_turn
+    goalie = Goalie.new
+    player = Player.new
+    match = Match.new(goalie, player)
+    player.kick("L")
+    goalie.guess("R")
+    assert_raises ArgumentError do
+      player.kick("L")
+    end
+  end
+  
 end
